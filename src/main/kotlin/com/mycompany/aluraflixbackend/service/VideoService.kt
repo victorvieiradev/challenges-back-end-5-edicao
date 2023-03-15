@@ -11,4 +11,7 @@ class VideoService(
     fun exibirVideos(): MutableIterable<VideoModel> {
         return videoRepository.findAll()
     }
+    fun cadastrarVideo(videoModel: VideoModel): VideoModel {
+        return videoRepository.save(videoModel)
+    }
 }
