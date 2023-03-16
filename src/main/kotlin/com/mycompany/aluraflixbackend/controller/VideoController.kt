@@ -15,10 +15,11 @@ class VideoController(
     val videoService: VideoService
 ) {
     @GetMapping("/videos")
+    @ResponseStatus(HttpStatus.OK)
     fun exibirVideos(): MutableIterable<VideoModel> {
         return videoService.exibirVideos()
     }
-    @PostMapping("/video")
+    @PostMapping("/videos")
     @ResponseStatus(HttpStatus.CREATED)
     fun cadastrarVideo(@Valid @RequestBody videoModel: VideoModel): VideoModel {
         return videoService.cadastrarVideo(videoModel)
