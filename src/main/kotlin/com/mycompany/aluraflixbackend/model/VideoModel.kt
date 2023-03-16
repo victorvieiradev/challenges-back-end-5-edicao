@@ -15,11 +15,11 @@ data class VideoModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)///
     val id: Int,
-    @NotBlank(message = "O título não pode estar vazio.")
-    val titulo: String,
-    @NotBlank(message = "A descrição não pode estar vazia.")
-    val descricao: String,
-    @NotBlank(message = "A URL não pode estar vazia.")
-    val url: String
+    @field:NotBlank(message = "O título não pode estar vazio.")
+    val titulo: String?,
+    @field:NotBlank(message = "A descrição não pode estar vazia.")
+    val descricao: String?,
+    @field:NotBlank(message = "A URL não pode estar vazia.")
+    val url: String?
 ) {
 }
