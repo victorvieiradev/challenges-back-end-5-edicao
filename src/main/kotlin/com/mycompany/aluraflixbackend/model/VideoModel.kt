@@ -14,12 +14,12 @@ import kotlin.math.min
 data class VideoModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)///
-    val id: Int,
+    var id: Int,
     @field:NotBlank(message = "O título não pode estar vazio.")
-    val titulo: String?,
+    var titulo: String?,
     @field:NotBlank(message = "A descrição não pode estar vazia.")
-    val descricao: String?,
+    var descricao: String?,
     @field:NotBlank(message = "A URL não pode estar vazia.")
-    val url: String?
+    var url: String?
 ) {
 }
