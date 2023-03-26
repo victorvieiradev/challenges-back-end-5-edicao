@@ -31,4 +31,8 @@ class VideoService(
         BeanUtils.copyProperties(videoModel, videoEncontrado)
         return cadastrarVideo(videoEncontrado)
     }
+    fun pesquisaVideo(pesquisa: String): List<VideoModel> {
+        return  videoRepository.findByTituloIgnoreCaseContaining(pesquisa)
+    }
+
 }
