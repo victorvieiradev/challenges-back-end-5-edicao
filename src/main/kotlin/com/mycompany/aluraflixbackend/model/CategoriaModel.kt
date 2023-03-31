@@ -13,6 +13,6 @@ data class CategoriaModel(
     var titulo: String?,
     @field:NotBlank(message = "A cor não pode estar em branco")
     var cor: String?,
-    @field:OneToMany
+    @field:OneToMany(mappedBy = "categoria", cascade = [CascadeType.ALL])
     var videos: MutableList<VideoModel>?
 )
