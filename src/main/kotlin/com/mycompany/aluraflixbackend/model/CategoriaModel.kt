@@ -1,12 +1,10 @@
 package com.mycompany.aluraflixbackend.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
 
 @Entity
+@Table(name = "TB_CATEGORIA")
 data class CategoriaModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,5 +12,7 @@ data class CategoriaModel(
     @field:NotBlank(message = "O Título não pode estar em branco.")
     var titulo: String?,
     @field:NotBlank(message = "A cor não pode estar em branco")
-    var cor: String?
+    var cor: String?,
+    @field:OneToMany
+    var videos: MutableList<VideoModel>?
 )
