@@ -1,10 +1,11 @@
 package com.mycompany.aluraflixbackend.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "TB_CATEGORIA")
+@Table(name = "categorias_tb")
 data class CategoriaModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +14,7 @@ data class CategoriaModel(
     var titulo: String?,
     @field:NotBlank(message = "A cor não pode estar em branco")
     var cor: String?,
+
     @field:OneToMany(mappedBy = "categoria", cascade = [CascadeType.ALL])
-    var videos: MutableList<VideoModel>?
+    var videos:List<VideoModel> = listOf<VideoModel>()
 )
