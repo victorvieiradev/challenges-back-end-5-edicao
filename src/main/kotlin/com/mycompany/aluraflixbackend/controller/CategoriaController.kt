@@ -33,4 +33,7 @@ class CategoriaController(
     @ResponseStatus(HttpStatus.OK)
     fun excluirCategoria(@PathVariable id: Int) = categoriaService.excluirCategoria(id)
 
+    @GetMapping("/{id}/videos")
+    fun exibirVideospelaCategoria(@PathVariable id: Int) = categoriaService.exibirVideosPorCategoria(id)
+
 }

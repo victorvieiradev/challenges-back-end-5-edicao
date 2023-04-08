@@ -2,6 +2,7 @@ package com.mycompany.aluraflixbackend.service
 
 import com.mycompany.aluraflixbackend.exceptions.NotFoundException
 import com.mycompany.aluraflixbackend.model.CategoriaModel
+import com.mycompany.aluraflixbackend.model.VideoModel
 import com.mycompany.aluraflixbackend.repository.CategoriaRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -32,5 +33,12 @@ class CategoriaService(
             categoriaModel.id = categoriaBuscada.id
         }
         return cadastrarCategoria(categoriaModel)
+    }
+    fun exibirVideosPorCategoria(idCategoria: Int): List<VideoModel> {
+        val categoriaBuscada = buscarCategoriaPeloId(idCategoria)
+        if (categoriaBuscada != null) {
+            return categoriaBuscada.videos
+        }
+        return throw NotFoundException("Sem código de erro", "Não existe vídeos cadastrados nesta categoria.")
     }
 }
