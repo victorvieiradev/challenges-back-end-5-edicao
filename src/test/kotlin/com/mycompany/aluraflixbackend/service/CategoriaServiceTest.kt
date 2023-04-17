@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
+import java.util.*
 
 @ExtendWith(MockKExtension::class)
 class CategoriaServiceTest {
@@ -34,6 +35,11 @@ class CategoriaServiceTest {
 
     @Test
     fun buscarCategoriaPeloId() {
+        val categoria = criarCategoria()
+        every { categoriaRepository.findById(1) } returns Optional.of(categoria)
+        val categoriaBuscada = categoriaService.buscarCategoriaPeloId(1)
+        assertEquals(categoria, categoriaBuscada)
+        verify(exactly = 1){categoriaRepository.findById(1)}
     }
 
     @Test
