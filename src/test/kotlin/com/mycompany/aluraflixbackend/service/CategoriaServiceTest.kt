@@ -42,8 +42,13 @@ class CategoriaServiceTest {
 
     @Test
     fun cadastrarCategoria() {
-    }
+        val categoria = criarCategoria()
+        every { categoriaRepository.save(categoria) } returns categoria
+        assertEquals(categoria, categoriaService.cadastrarCategoria(categoria))
+        verify(exactly = 1){categoriaRepository.save(categoria)}
+        verify(exactly = 1){categoriaService.cadastrarCategoria(categoria)}
 
+    }
     @Test
     fun atualizarCategoria() {
     }
